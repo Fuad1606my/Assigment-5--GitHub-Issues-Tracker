@@ -19,23 +19,25 @@
 
       <div class="nav-actions">
         <form id="searchForm" class="search-bar">
-          <div class="search-input-wrap">
+          <div class="search-input-wrap header-search">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.85 11.94 2.65 2.64-1.41 1.42-2.65-2.65 1.41-1.41Z"></path></svg>
             <input id="searchInput" type="text" placeholder="Search issues..." />
           </div>
-          <button type="submit" class="primary-btn">Search</button>
         </form>
 
-        <button id="logoutBtn" type="button" class="ghost-btn">Logout</button>
+        <button id="newIssueBtn" type="button" class="primary-btn nav-new-btn">+ New Issue</button>
       </div>
     </header>
 
     <main class="content-wrap">
       <section class="filter-panel">
-        <div class="tab-buttons" role="tablist" aria-label="Issue filters">
+        <div class="panel-tools">
+          <div class="tab-buttons" role="tablist" aria-label="Issue filters">
           <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
           <button class="tab-btn" data-filter="open" role="tab" aria-selected="false">Open</button>
           <button class="tab-btn" data-filter="closed" role="tab" aria-selected="false">Closed</button>
+        </div>
+          <button id="logoutBtn" type="button" class="logout-link-btn">Logout</button>
         </div>
       </section>
 
@@ -81,17 +83,6 @@
       </div>
     </div>
   </div>
-  <div class="issue-meta">
-  <div>
-    <p>Assignee:</p>
-    <h4 id="issueAssignee"></h4>
-  </div>
-
-  <div>
-    <p>Priority:</p>
-    <h4 id="issuePriority"></h4>
-  </div>
-</div>
 
   <script src="app.js"></script>
 </body>
