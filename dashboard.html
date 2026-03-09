@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Issues Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dashboard-body locked-body">
+  <div class="page-shell dashboard-shell">
+    <header class="navbar">
+      <div class="brand-row">
+        <img src="assets/github-logo.png" alt="GitHub logo" class="nav-logo" />
+        <h2>GitHub Issues Tracker</h2>
+      </div>
+
+      <div class="nav-actions">
+        <form id="searchForm" class="search-bar">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.85 11.94 2.65 2.64-1.41 1.42-2.65-2.65 1.41-1.41Z"></path></svg>
+            <input id="searchInput" type="text" placeholder="Search issues..." />
+          </div>
+          <button type="submit" class="primary-btn">Search</button>
+        </form>
+
+        <button id="logoutBtn" type="button" class="ghost-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="filter-panel">
+        <div class="tab-buttons" role="tablist" aria-label="Issue filters">
+          <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="tab-btn" data-filter="open" role="tab" aria-selected="false">Open</button>
+          <button class="tab-btn" data-filter="closed" role="tab" aria-selected="false">Closed</button>
+        </div>
+      </section>
+
+      <section class="issues-panel">
+        <div class="panel-header">
+          <div class="panel-title-row">
+            <div class="panel-icon">
+              <img src="assets/Aperture.png" alt="Issues icon" />
+            </div>
+            <div>
+              <h3><span id="issueCount">0</span> Issues</h3>
+              <p>Track and manage your project issues</p>
+            </div>
+          </div>
+          <div class="legend">
+            <span><i class="dot dot-open"></i>Open</span>
+            <span><i class="dot dot-closed"></i>Closed</span>
+          </div>
+        </div>
+
+        <div id="loadingState" class="state-box hidden">
+          <div class="spinner"></div>
+          <p>Loading issues...</p>
+        </div>
+
+        <div id="emptyState" class="state-box hidden">
+          <h4>No issues found</h4>
+          <p>Try a different search or switch back to another tab.</p>
+        </div>
+
+        <div id="issuesGrid" class="issues-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="issueModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button id="modalCloseX" class="modal-close-x" aria-label="Close modal">&times;</button>
+      <div id="modalContent"></div>
+      <div class="modal-footer">
+        <button id="modalCloseBtn" class="primary-btn">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="issue-meta">
+  <div>
+    <p>Assignee:</p>
+    <h4 id="issueAssignee"></h4>
+  </div>
+
+  <div>
+    <p>Priority:</p>
+    <h4 id="issuePriority"></h4>
+  </div>
+</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

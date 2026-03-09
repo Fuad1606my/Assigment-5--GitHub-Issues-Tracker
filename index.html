@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | GitHub Issues Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="auth-body">
+  <section class="login-page login-page-only">
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/github-logo.png" alt="GitHub logo" class="brand-logo" />
+        <h1>GitHub Issues Tracker</h1>
+        <p>Sign in to manage your issues</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="Enter Username" autocomplete="username" />
+        <small>Default: admin</small>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password" />
+        <small>Default: admin123</small>
+
+        <button type="submit" class="primary-btn full-btn">Sign In</button>
+      </form>
+
+      <div class="divider"><span>OR</span></div>
+
+      <div class="demo-box">
+        <p>Demo Credentials:</p>
+        <h3>Username: <span>admin</span></h3>
+        <h3>Password: <span>admin123</span></h3>
+      </div>
+
+      <p id="loginError" class="form-error"></p>
+    </div>
+  </section>
+
+  <script src="login.js"></script>
+</body>
+</html>
