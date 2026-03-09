@@ -24,7 +24,14 @@
         <small>Default: admin</small>
 
         <label for="password">Password</label>
-        <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password" />
+        <div class="password-field">
+          <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password" />
+          <button type="button" id="togglePassword" class="password-toggle" aria-label="Show password">Show</button>
+        </div>
+        <label class="show-password-row" for="showPasswordCheck">
+          <input id="showPasswordCheck" type="checkbox" />
+          <span>Show password</span>
+        </label>
         <small>Default: admin123</small>
 
         <button type="submit" class="primary-btn full-btn">Sign In</button>
