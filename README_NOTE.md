@@ -50,7 +50,7 @@ Template literals are strings written with backticks instead of quotes. They all
 
 Example:
 ```js
-const name = 'Fahim';
+const name = 'Fuad';
 const message = `Hello, ${name}`;
 ```
 
