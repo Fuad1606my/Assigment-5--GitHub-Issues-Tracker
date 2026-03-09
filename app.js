@@ -20,7 +20,8 @@ const refs = {
   modalContent: document.getElementById('modalContent'),
   modalCloseX: document.getElementById('modalCloseX'),
   modalCloseBtn: document.getElementById('modalCloseBtn'),
-  logoutBtn: document.getElementById('logoutBtn')
+  logoutBtn: document.getElementById('logoutBtn'),
+  newIssueBtn: document.getElementById('newIssueBtn')
 };
 
 function init() {
@@ -57,6 +58,7 @@ function bindEvents() {
   });
 
   refs.logoutBtn.addEventListener('click', handleLogout);
+  refs.newIssueBtn.addEventListener('click', openNewIssueMessage);
   refs.modalCloseBtn.addEventListener('click', closeModal);
   refs.modalCloseX.addEventListener('click', closeModal);
   refs.modal.addEventListener('click', (event) => {
@@ -86,6 +88,21 @@ function hasAccess() {
 function handleLogout() {
   localStorage.removeItem(AUTH_KEY);
   window.location.replace('index.html');
+}
+
+function openNewIssueMessage() {
+  refs.modal.classList.remove('hidden');
+  refs.modal.setAttribute('aria-hidden', 'false');
+  refs.modalContent.innerHTML = `
+    <h2 id="modalTitle" class="modal-title">New issue form</h2>
+    <p class="modal-desc">This button is added to match the design. If your teacher asks for create issue functionality later, this spot is ready for a form.</p>
+    <div class="modal-info-grid">
+      <div class="info-item full-width">
+        <p>Status</p>
+        <h4>UI Ready</h4>
+      </div>
+    </div>
+  `;
 }
 
 async function loadIssues() {
