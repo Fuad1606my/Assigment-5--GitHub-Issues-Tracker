@@ -5,6 +5,11 @@ const AUTH_KEY = 'issue-tracker-auth';
 const loginForm = document.getElementById('loginForm');
 const loginError = document.getElementById('loginError');
 
+
+const passwordInput = document.getElementById('password');
+const togglePasswordButton = document.getElementById('togglePassword');
+const showPasswordCheck = document.getElementById('showPasswordCheck');
+
 bootLoginPage();
 
 function bootLoginPage() {
@@ -14,6 +19,8 @@ function bootLoginPage() {
   }
 
   loginForm.addEventListener('submit', handleLogin);
+  togglePasswordButton.addEventListener('click', togglePasswordVisibility);
+  showPasswordCheck.addEventListener('change', syncPasswordVisibility);
 }
 
 function handleLogin(event) {
@@ -51,4 +58,21 @@ function isUserLoggedIn() {
     localStorage.removeItem(AUTH_KEY);
     return false;
   }
+}
+
+
+function togglePasswordVisibility() {
+  const shouldShow = passwordInput.type === 'password';
+  updatePasswordField(shouldShow);
+}
+
+function syncPasswordVisibility(event) {
+  updatePasswordField(event.target.checked);
+}
+
+function updatePasswordField(shouldShow) {
+  passwordInput.type = shouldShow ? 'text' : 'password';
+  togglePasswordButton.textContent = shouldShow ? 'Hide' : 'Show';
+  togglePasswordButton.setAttribute('aria-label', shouldShow ? 'Hide password' : 'Show password');
+  showPasswordCheck.checked = shouldShow;
 }
