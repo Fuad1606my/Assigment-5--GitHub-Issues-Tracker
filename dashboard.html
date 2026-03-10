@@ -19,8 +19,10 @@
 
       <div class="nav-actions">
         <form id="searchForm" class="search-bar">
-          <div class="search-input-wrap header-search">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.85 11.94 2.65 2.64-1.41 1.42-2.65-2.65 1.41-1.41Z"></path></svg>
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.85 11.94 2.65 2.64-1.41 1.42-2.65-2.65 1.41-1.41Z"></path>
+            </svg>
             <input id="searchInput" type="text" placeholder="Search issues..." />
           </div>
         </form>
@@ -33,10 +35,11 @@
       <section class="filter-panel">
         <div class="panel-tools">
           <div class="tab-buttons" role="tablist" aria-label="Issue filters">
-          <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="tab-btn" data-filter="open" role="tab" aria-selected="false">Open</button>
-          <button class="tab-btn" data-filter="closed" role="tab" aria-selected="false">Closed</button>
-        </div>
+            <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="tab-btn" data-filter="open" role="tab" aria-selected="false">Open</button>
+            <button class="tab-btn" data-filter="closed" role="tab" aria-selected="false">Closed</button>
+          </div>
+
           <button id="logoutBtn" type="button" class="logout-link-btn">Logout</button>
         </div>
       </section>
@@ -52,6 +55,7 @@
               <p>Track and manage your project issues</p>
             </div>
           </div>
+
           <div class="legend">
             <span><i class="dot dot-open"></i>Open</span>
             <span><i class="dot dot-closed"></i>Closed</span>
@@ -75,9 +79,11 @@
 
   <div id="issueModal" class="modal hidden" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
+
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button id="modalCloseX" class="modal-close-x" aria-label="Close modal">&times;</button>
       <div id="modalContent"></div>
+
       <div class="modal-footer">
         <button id="modalCloseBtn" class="primary-btn">Close</button>
       </div>
