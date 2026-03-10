@@ -4,26 +4,24 @@ const AUTH_KEY = 'issue-tracker-auth';
 
 const loginForm = document.getElementById('loginForm');
 const loginError = document.getElementById('loginError');
-
-
 const passwordInput = document.getElementById('password');
 const togglePasswordButton = document.getElementById('togglePassword');
 const showPasswordCheck = document.getElementById('showPasswordCheck');
 
-bootLoginPage();
+startLoginPage();
 
-function bootLoginPage() {
-  if (isUserLoggedIn()) {
+function startLoginPage() {
+  if (isLoggedIn()) {
     window.location.replace('dashboard.html');
     return;
   }
 
-  loginForm.addEventListener('submit', handleLogin);
-  togglePasswordButton.addEventListener('click', togglePasswordVisibility);
-  showPasswordCheck.addEventListener('change', syncPasswordVisibility);
+  loginForm.addEventListener('submit', onLoginSubmit);
+  togglePasswordButton.addEventListener('click', onTogglePassword);
+  showPasswordCheck.addEventListener('change', onShowPasswordChange);
 }
 
-function handleLogin(event) {
+function onLoginSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(loginForm);
@@ -37,8 +35,8 @@ function handleLogin(event) {
 
   const authData = {
     username,
-    loginTime: Date.now(),
-    isLoggedIn: true
+    isLoggedIn: true,
+    loginTime: Date.now()
   };
 
   localStorage.setItem(AUTH_KEY, JSON.stringify(authData));
@@ -47,32 +45,33 @@ function handleLogin(event) {
   window.location.href = 'dashboard.html';
 }
 
-function isUserLoggedIn() {
-  const rawValue = localStorage.getItem(AUTH_KEY);
-  if (!rawValue) return false;
+function isLoggedIn() {
+  const savedAuth = localStorage.getItem(AUTH_KEY);
+
+  if (!savedAuth) {
+    return false;
+  }
 
   try {
-    const savedValue = JSON.parse(rawValue);
-    return Boolean(savedValue && savedValue.isLoggedIn);
-  } catch (error) {
+    const parsedAuth = JSON.parse(savedAuth);
+    return Boolean(parsedAuth && parsedAuth.isLoggedIn);
+  } catch {
     localStorage.removeItem(AUTH_KEY);
     return false;
   }
 }
 
-
-function togglePasswordVisibility() {
-  const shouldShow = passwordInput.type === 'password';
-  updatePasswordField(shouldShow);
+function onTogglePassword() {
+  setPasswordVisibility(passwordInput.type === 'password');
 }
 
-function syncPasswordVisibility(event) {
-  updatePasswordField(event.target.checked);
+function onShowPasswordChange(event) {
+  setPasswordVisibility(event.target.checked);
 }
 
-function updatePasswordField(shouldShow) {
-  passwordInput.type = shouldShow ? 'text' : 'password';
-  togglePasswordButton.textContent = shouldShow ? 'Hide' : 'Show';
-  togglePasswordButton.setAttribute('aria-label', shouldShow ? 'Hide password' : 'Show password');
-  showPasswordCheck.checked = shouldShow;
+function setPasswordVisibility(showPassword) {
+  passwordInput.type = showPassword ? 'text' : 'password';
+  togglePasswordButton.textContent = showPassword ? 'Hide' : 'Show';
+  togglePasswordButton.setAttribute('aria-label', showPassword ? 'Hide password' : 'Show password');
+  showPasswordCheck.checked = showPassword;
 }
