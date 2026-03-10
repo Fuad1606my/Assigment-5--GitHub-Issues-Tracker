@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="auth-body">
-  <section class="login-page login-page-only">
+  <section class="login-page">
     <div class="login-card">
       <div class="login-brand">
         <img src="assets/github-logo.png" alt="GitHub logo" class="brand-logo" />
@@ -20,14 +20,29 @@
 
       <form id="loginForm" class="login-form">
         <label for="username">Username</label>
-        <input id="username" name="username" type="text" placeholder="Enter Username" autocomplete="username" />
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="Enter Username"
+          autocomplete="username"
+        />
         <small>Default: admin</small>
 
         <label for="password">Password</label>
         <div class="password-field">
-          <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password" />
-          <button type="button" id="togglePassword" class="password-toggle" aria-label="Show password">Show</button>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            autocomplete="current-password"
+          />
+          <button type="button" id="togglePassword" class="password-toggle" aria-label="Show password">
+            Show
+          </button>
         </div>
+
         <label class="show-password-row" for="showPasswordCheck">
           <input id="showPasswordCheck" type="checkbox" />
           <span>Show password</span>
